@@ -1,12 +1,10 @@
 import { memo, useEffect, useRef, useState, type RefObject } from 'react';
-import { Download, Menu, Search } from 'lucide-react';
+import { Menu, Search } from 'lucide-react';
 import { Link } from '@tanstack/react-router';
 import { Button } from '@/components/ui/button';
-import { InstallCard } from './install-card';
+import { ThemeToggle } from './theme-toggle';
 import { QuickSearch } from './quick-search';
 import { preloadLibrarySearch } from '@/lib/library-search';
-import { useAppInstallation } from '@/hooks/use-app-installation';
-import { requestInstall } from '@/lib/app-installation';
 
 interface AppBarProps {
   triggerRef: RefObject<HTMLButtonElement | null>;
@@ -19,12 +17,6 @@ interface AppBarProps {
 
 export const AppBar = memo(function AppBar({ triggerRef, menuExpanded, installOpen, onToggleMenu, onToggleInstall, onCloseInstall }: AppBarProps) {
   const [searchOpen, setSearchOpen] = useState(false);
-  const { available, installed } = useAppInstallation();
-  const install = async () => {
-    if (!available) { onToggleInstall(); return; }
-    const outcome = await requestInstall();
-    if (outcome === 'unavailable') onToggleInstall();
-  };
   const searchTrigger = useRef<HTMLButtonElement>(null);
   const [shortcut, setShortcut] = useState('Ctrl K');
   const warmSearch = () => { void preloadLibrarySearch().catch(() => undefined); };
@@ -56,8 +48,7 @@ export const AppBar = memo(function AppBar({ triggerRef, menuExpanded, installOp
     <Button asChild variant="source" size="source" className="library-brand"><Link to="/"><span>FRESH TEACHER'S LIBRARY</span><span className="library-brand-caption">For Fresh Teachers and Planned Kids</span></Link></Button>
     <div className="library-appbar-actions">
       <Button ref={searchTrigger} variant="source" size="source" className="library-icon-control library-search-control" aria-label="Search the library" aria-haspopup="dialog" aria-expanded={searchOpen} title={`Search the library (${shortcut})`} onPointerEnter={warmSearch} onFocus={warmSearch} onClick={() => { warmSearch(); onCloseInstall(); setSearchOpen(true); }}><Search /><kbd className="library-search-shortcut" aria-hidden="true">{shortcut}</kbd></Button>
-      {!installed && <Button variant="source" size="source" className="library-install-control" aria-label="Install the app" aria-haspopup="dialog" aria-expanded={installOpen} onClick={() => void install()} title="Install the app"><Download /></Button>}
-      <InstallCard open={installOpen && !installed} onClose={onCloseInstall} />
+      <ThemeToggle />
     </div>
   </header><QuickSearch open={searchOpen} onOpenChange={setSearchOpen} triggerRef={searchTrigger} /></>;
 });
