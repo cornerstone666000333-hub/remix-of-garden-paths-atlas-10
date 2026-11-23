@@ -882,3 +882,8 @@ html.dark .legacy-page .dropdown-menu, html.dark .class-hub .panel, html.dark .c
 html.dark .legacy-page .dropdown-menu a, html.dark .class-hub .dropdown-menu a { color: var(--foreground) !important; }
 html.dark .legacy-page h1, html.dark .legacy-page h2, html.dark .legacy-page h3, html.dark .legacy-page h4, html.dark .legacy-page p, html.dark .legacy-page li { color: inherit; }
 html.dark .legacy-page input, html.dark .legacy-page select, html.dark .legacy-page textarea { background-color: var(--background) !important; color: var(--foreground) !important; border-color: var(--input) !important; }
+
+/* Dark theme legibility fixes from the audit. */
+html.dark .homepage-instruction { color: #fff; }
+html.dark .homepage-brand, html.dark .homepage-brand * { color: var(--foreground); }
+html.dark a.africaVotesChat { background: var(--card) !important; border: 1px solid var(--border); }
