@@ -238,3 +238,6 @@ html.dark .class-hub .btn-info * { color: #fff; }
 html.dark .class-hub .btn-primary { background: oklch(0.45 0.15 285); border-color: oklch(0.58 0.15 285); color: #fff; }
 html.dark .class-hub .btn-primary * { color: #fff; }
 html.dark .class-hub hr.style1 { border-top-color: var(--border); }
+
+/* NEW! sticker text: red so it reads on the yellow star in both themes. */
+.class-hub .class-resource-new, .class-hub .class-resource-new span, html.dark .class-hub .btn-info .class-resource-new span { color: #d00000 !important; }
