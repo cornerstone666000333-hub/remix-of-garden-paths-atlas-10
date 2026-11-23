@@ -887,3 +887,5 @@ html.dark .legacy-page input, html.dark .legacy-page select, html.dark .legacy-p
 html.dark .homepage-instruction { color: #fff; }
 html.dark .homepage-brand, html.dark .homepage-brand * { color: var(--foreground); }
 html.dark a.africaVotesChat { background: var(--card) !important; border: 1px solid var(--border); }
+
+html.dark .library-search-shortcut { color: var(--foreground); }
