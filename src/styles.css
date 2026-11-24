@@ -293,6 +293,17 @@
 }
 .library-brand svg { width: 1.5em; height: 1.5em; }
 .library-brand-caption { display: block; font-size: var(--sign-caption-size); letter-spacing: var(--sign-caption-spacing); line-height: 1.1; font-weight: 700; opacity: 1; -webkit-text-stroke: .35px currentColor; }
+/* Virus glyph standing in for the O in "COVID-19": sized to the caption's cap height and given a gentle wiggle. */
+.library-brand-virus { display: inline-block; font-family: system-ui, sans-serif; font-size: .92em; line-height: 1; vertical-align: -0.04em; -webkit-text-stroke: 0; transform-origin: center; animation: covid-wiggle 2.4s ease-in-out infinite; }
+@keyframes covid-wiggle {
+  0%, 100% { transform: rotate(0deg) scale(1); }
+  5% { transform: rotate(-12deg) scale(1.06); }
+  10% { transform: rotate(10deg) scale(1.06); }
+  15% { transform: rotate(-8deg); }
+  20% { transform: rotate(6deg); }
+  25% { transform: rotate(0deg); }
+}
+@media (prefers-reduced-motion: reduce) { .library-brand-virus { animation: none; transform: none; } }
 .library-appbar-actions { display: flex; align-items: center; gap: 12px; margin-left: 0; justify-self: end; }
 /* Search control engraved into the wooden plank — same box as the install badge */
 .library-search-control {
