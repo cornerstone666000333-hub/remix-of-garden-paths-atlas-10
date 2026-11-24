@@ -293,6 +293,16 @@
 }
 .library-brand svg { width: 1.5em; height: 1.5em; }
 .library-brand-caption { display: block; font-size: var(--sign-caption-size); letter-spacing: var(--sign-caption-spacing); line-height: 1.1; font-weight: 700; opacity: 1; -webkit-text-stroke: .35px currentColor; }
+/* Coronavirus glyph standing in for the letter O in "COVID-19" — sized like a capital letter. */
+.library-brand-caption .covid-virus-char {
+  width: 0.95em; height: 0.95em; display: inline-block; vertical-align: -0.12em;
+  margin: 0 0.02em; fill: #aa0000; -webkit-text-stroke: 0;
+  animation: covid-virus-spin 18s linear infinite; transform-origin: center;
+}
+@keyframes covid-virus-spin { to { transform: rotate(360deg); } }
+@media (prefers-reduced-motion: reduce) {
+  .library-brand-caption .covid-virus-char { animation: none; }
+}
 .library-appbar-actions { display: flex; align-items: center; gap: 12px; margin-left: 0; justify-self: end; }
 /* Search control engraved into the wooden plank — same box as the install badge */
 .library-search-control {
